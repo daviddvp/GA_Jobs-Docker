@@ -13,7 +13,7 @@ jobs:
         image: node:16
     env:
         MONGODB_CONNECTION_PROTOCOL: mongodb
-        MONGODB_CLUSTER_ADDRESS: mongodb
+        MONGODB_CLUSTER_ADDRESS: 127.0.0.0.1:27017
         MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
         MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
         PORT: 8080
@@ -23,6 +23,8 @@ jobs:
             env:
                 MONGO_INITDB_ROOT_USERNAME: david       
                 MONGO_INITDB_ROOT_PASSWORD: david
+            ports:
+                - 27017:27017 
     runs-on: ubuntu-lates
 
     steps:
